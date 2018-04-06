@@ -107,7 +107,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="text">
-         <string>我写好了</string>
+         <string>下一题</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_2">

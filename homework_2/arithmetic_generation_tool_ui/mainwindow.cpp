@@ -27,7 +27,7 @@ void MainWindow::on_pushButton_clicked()
     //QString qstr="asdasd";
     ui->stackedWidget1->setCurrentIndex(index);
 
-    ui->textBrowser->append("   ");
+    ui->textBrowser->setPlainText("456");
 
     timer= new QTimer;
     if(one = true){
@@ -47,16 +47,11 @@ void MainWindow::timeout(){
         QMessageBox *box = new QMessageBox(this);
 
             if(QMessageBox::Yes == box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes)){
-                QMessageBox::information(this,"ok","not ok");
-                timer->stop();
+                ui->textBrowser->setPlainText("123");
+                ui->textEdit->clear();
             }
-            //one = false;
-            //timer->stop();
-
-
-        //box->exec();
+            time1 =20;
     }
-    //ui->lcdNumber->display(QString::number(time1,10));
 
 }
 
@@ -80,12 +75,11 @@ void MainWindow::on_actionshuchuchengji_triggered()
 
 }
 
-
-
-
-
-
-
-
-
-
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->textEdit->toPlainText();
+    ui->textBrowser->setPlainText("789");
+    ui->textEdit->clear();
+    time1=20;
+    //ui->textEdit->clear();
+}

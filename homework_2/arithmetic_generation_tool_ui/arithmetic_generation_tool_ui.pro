@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,7 +31,8 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    dialog1.h
+    dialog1.h \
+    connection.h
 
 FORMS += \
         mainwindow.ui \

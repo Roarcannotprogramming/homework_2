@@ -41,6 +41,8 @@ private slots:
 
     void timeout();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     //QStackedWidget *main_stack_widget;

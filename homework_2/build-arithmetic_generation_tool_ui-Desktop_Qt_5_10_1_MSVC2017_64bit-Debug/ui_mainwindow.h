@@ -180,7 +180,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "\346\210\221\345\206\231\345\245\275\344\272\206", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "\344\270\213\344\270\200\351\242\230", nullptr));
         label_2->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">\347\255\224\346\241\210</span></p></body></html>", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266", nullptr));
