@@ -66,11 +66,13 @@ public:
     QLabel *label_2;
     QLabel *label_3;
     QLCDNumber *lcdNumber;
+    QLabel *label_10;
+    QLabel *label_11;
     QMenuBar *menuBar;
     QMenu *menu;
     QMenu *menu_2;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
+    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -163,16 +165,22 @@ public:
         pushButton_2->setGeometry(QRect(370, 210, 151, 71));
         label_2 = new QLabel(page_2);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(11, 11, 274, 17));
+        label_2->setGeometry(QRect(140, 10, 61, 20));
         label_3 = new QLabel(page_2);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(400, 10, 32, 17));
         lcdNumber = new QLCDNumber(page_2);
         lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
         lcdNumber->setGeometry(QRect(80, 260, 131, 41));
+        label_10 = new QLabel(page_2);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setGeometry(QRect(70, 10, 72, 15));
+        label_11 = new QLabel(page_2);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setGeometry(QRect(160, 10, 72, 15));
         stackedWidget1->addWidget(page_2);
 
-        gridLayout->addWidget(stackedWidget1, 0, 0, 1, 1);
+        gridLayout->addWidget(stackedWidget1, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -183,12 +191,12 @@ public:
         menu_2 = new QMenu(menuBar);
         menu_2->setObjectName(QStringLiteral("menu_2"));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+        mainToolBar = new QToolBar(MainWindow);
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         menuBar->addAction(menu->menuAction());
         menuBar->addAction(menu_2->menuAction());
@@ -197,8 +205,11 @@ public:
         menu_2->addAction(actionlishijiu);
         menu_2->addAction(actionshuchuchengji);
         mainToolBar->addAction(actionewwewe);
+        mainToolBar->addSeparator();
         mainToolBar->addAction(actioncuotiben);
+        mainToolBar->addSeparator();
         mainToolBar->addAction(actionlishijiu);
+        mainToolBar->addSeparator();
         mainToolBar->addAction(actionshuchuchengji);
 
         retranslateUi(MainWindow);
@@ -251,8 +262,10 @@ public:
 "</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         pushButton_2->setText(QApplication::translate("MainWindow", "\344\270\213\344\270\200\351\242\230", nullptr));
-        label_2->setText(QString());
+        label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">\347\255\224\346\241\210</span></p></body></html>", nullptr));
+        label_10->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">\347\254\254</p></body></html>", nullptr));
+        label_11->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">\351\242\230</p></body></html>", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266", nullptr));
         menu_2->setTitle(QApplication::translate("MainWindow", "\345\267\245\345\205\267", nullptr));
     } // retranslateUi

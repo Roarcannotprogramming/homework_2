@@ -43,11 +43,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     //QStackedWidget *main_stack_widget;
     int task_num, oper_num, max_num;
     int count, index;
+    int task_num_0;
 };
 
 #endif // MAINWINDOW_H
