@@ -25,10 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    dialog1.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    dialog1.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    dialog1.ui
