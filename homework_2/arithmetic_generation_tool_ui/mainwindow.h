@@ -15,6 +15,17 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_actionewwewe_triggered();
+
+    void on_actioncuotiben_triggered();
+
+    void on_actionlishijiu_triggered();
+
+    void on_actionshuchuchengji_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
