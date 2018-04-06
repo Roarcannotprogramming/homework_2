@@ -46,6 +46,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     //QStackedWidget *main_stack_widget;
+    int task_num, oper_num, max_num;
+    int count, index;
 };
 
 #endif // MAINWINDOW_H
