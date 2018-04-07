@@ -2,6 +2,11 @@
 #define DIALOG1_H
 
 #include <QDialog>
+#include <QStandardItemModel>
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
 
 namespace Ui {
 class Dialog1;

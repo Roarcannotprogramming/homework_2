@@ -16,6 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
 
@@ -23,17 +24,21 @@ class Ui_Dialog1
 {
 public:
     QDialogButtonBox *buttonBox;
+    QTableView *tableView;
 
     void setupUi(QDialog *Dialog1)
     {
         if (Dialog1->objectName().isEmpty())
             Dialog1->setObjectName(QStringLiteral("Dialog1"));
-        Dialog1->resize(400, 300);
+        Dialog1->resize(991, 614);
         buttonBox = new QDialogButtonBox(Dialog1);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(30, 240, 341, 32));
+        buttonBox->setGeometry(QRect(590, 550, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        tableView = new QTableView(Dialog1);
+        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setGeometry(QRect(15, 11, 951, 511));
 
         retranslateUi(Dialog1);
         QObject::connect(buttonBox, SIGNAL(accepted()), Dialog1, SLOT(accept()));
