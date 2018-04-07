@@ -11,6 +11,8 @@
 #include <QMessageBox>
 #include <fstream>
 #include <iostream>
+#include <string>
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -27,7 +29,8 @@ public:
     QTimer *timer;
 
     int time1;
-    bool one;
+    //bool one;
+    ofstream wrong_answers;
 
 
 private slots:
@@ -55,7 +58,9 @@ private:
     int task_num, oper_num, max_num;
     int count, index;
     int task_num_0;
+    string question;
     int result;
+    int answer;
 };
 
 #endif // MAINWINDOW_H

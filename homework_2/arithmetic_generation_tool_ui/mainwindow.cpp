@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     index = 0;
     count = 0;
     task_num_0 = 0;
+    result = -1;
+    question = "";
+    answer = -1;
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
     ui->stackedWidget1->setCurrentIndex(index);
 
     ui->label_2->setText(QString::number(task_num_0-task_num+1));
-    ui->textBrowser->setPlainText("456");
+    ui->textBrowser->setPlainText("456");//输入题目
 
     timer= new QTimer;
     if(one = true){
@@ -51,20 +55,37 @@ void MainWindow::on_pushButton_clicked()
 //static int time1 = 20 ;
 
 void MainWindow::timeout(){
-    //int ii =1;
+
     if(time1!=0){
         time1--;
         ui->lcdNumber->display(QString::number(time1,10));
     }else{
         task_num--;
+
+        result = -1;
+
+        wrong_answers.open("./wrong_answer.txt",ios::app);    //添加到错题本
+        wrong_answers << question << " " << result << " " << answer << endl ;
+        wrong_answers.close();
+
+        result =-1;              //维护
+        question = "";
+        answer = -1;
+
         QMessageBox *box = new QMessageBox(this);
 
-            if(QMessageBox::Yes == box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes)){
+            if(QMessageBox::Yes == box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes));
+            /*{
                 ui->label_2->setText(QString::number(task_num_0-task_num+1));
-                ui->textBrowser->setPlainText("123");
+                ui->textBrowser->setPlainText("123"); //输入题目
                 ui->textEdit->clear();
-            }
+            }*/
             if(task_num != 0)
+                //question = 输入题目-------------------
+                //answer = 输入答案---------------------
+                ui->label_2->setText(QString::number(task_num_0-task_num+1));
+                ui->textBrowser->setPlainText("question_time_out");
+                ui->textEdit->clear();
                 time1 = 20;
             else{
                 timer->stop();
@@ -89,6 +110,11 @@ void MainWindow::on_actionewwewe_triggered()
 
 void MainWindow::on_actioncuotiben_triggered()
 {
+    //ofstream wrong_answers;
+    /*wrong_answers.open("./wrong_answer.txt",ios::app);
+    wrong_answers << question << " " << result <<" "<< answer << endl ;
+    wrong_answers.close();*/
+    ifstream wrong_things;
 
 }
 
@@ -105,12 +131,27 @@ void MainWindow::on_actionshuchuchengji_triggered()
 void MainWindow::on_pushButton_2_clicked()
 {
     task_num--;
-    ui->textEdit->toPlainText();
-    ui->label_2->setText(QString::number(task_num_0-task_num+1));
-    ui->textBrowser->setPlainText("789");
-    ui->textEdit->clear();
+    result = ui->textEdit->toPlainText();//获取结果
+
+    if(result != answer){           //加入错题本
+        wrong_answers.open("./wrong_answer.txt",ios::app);
+        wrong_answers << question << " " << result <<" "<< answer << endl ;
+        wrong_answers.close();
+
+        result =-1;
+        question = "";
+        answer = -1;
+    }
+
+    //进入下一题
+
     if(task_num != 0)
         time1=20;
+        //question = 输入题目-----------------
+        //answer = 输入答案-------------------
+        ui->label_2->setText(QString::number(task_num_0-task_num+1));
+        ui->textBrowser->setPlainText("question");
+        ui->textEdit->clear();
     else{
         timer->stop();
         index++;
