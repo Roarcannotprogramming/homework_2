@@ -16,6 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,7 @@ class Ui_Dialog1
 public:
     QDialogButtonBox *buttonBox;
     QTableView *tableView;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *Dialog1)
     {
@@ -38,7 +40,10 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tableView = new QTableView(Dialog1);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(15, 11, 951, 511));
+        tableView->setGeometry(QRect(15, 11, 821, 511));
+        pushButton = new QPushButton(Dialog1);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(860, 60, 93, 28));
 
         retranslateUi(Dialog1);
         QObject::connect(buttonBox, SIGNAL(accepted()), Dialog1, SLOT(accept()));
@@ -50,6 +55,7 @@ public:
     void retranslateUi(QDialog *Dialog1)
     {
         Dialog1->setWindowTitle(QApplication::translate("Dialog1", "Dialog", nullptr));
+        pushButton->setText(QApplication::translate("Dialog1", "\346\270\205\347\251\272", nullptr));
     } // retranslateUi
 
 };

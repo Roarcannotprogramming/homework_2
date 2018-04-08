@@ -128,6 +128,7 @@ void MainWindow::timeout(){
                 }
                 ui->stackedWidget1->setCurrentIndex(index);
                 ui->textBrowser_3->setPlainText(QString::number(task_num_0));
+                ui->textBrowser_2->setPlainText(QString::number(correct_num));
 
                 task_num = 0;
                 oper_num = 0;
@@ -139,7 +140,7 @@ void MainWindow::timeout(){
                 wrong_idd =-1;
                 correct_num = 0;
                 correct_rate = 0;
-
+                ui->textEdit->clear();
             }
     }
 
@@ -162,10 +163,6 @@ void MainWindow::on_actionewwewe_triggered()
 
 void MainWindow::on_actioncuotiben_triggered()
 {
-    //ofstream wrong_answers;
-    /*wrong_answers.open("./wrong_answer.txt",ios::app);
-    wrong_answers << question << " " << result <<" "<< answer << endl ;
-    wrong_answers.close();*/
     Dialog1 *dlg = new Dialog1(this);
     dlg->exec();
 }
@@ -223,12 +220,32 @@ void MainWindow::on_pushButton_2_clicked()
         history << task_num_0 << "\n" << correct_num << "\n" << correct_rate << endl;
         history.close();
 
+        share.open("./share.txt",ios::out);
+        if(correct_rate > 0.95){
+            share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Congratulations! You get a 4.3" <<endl ;
+        }
+        else if(correct_rate > 0.9){
+            share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Good job! You get a 4.0" <<endl ;
+        }
+        else if(correct_rate > 0.85){
+            share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Ah-ha! You get a 3.7" <<endl ;
+        }
+        else if(correct_rate > 0.82){
+            share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Come on! You get a 3.3" <<endl ;
+        }
+        else{
+            share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, only " << correct_num << u8" are correct! " << u8"Just ask you textbook for some help! " <<endl ;
+        }
+        share.close();
+
+
         index++;
         if(index == count){
             index =0;
         }
         ui->stackedWidget1->setCurrentIndex(index);
         ui->textBrowser_3->setPlainText(QString::number(task_num_0));
+        ui->textBrowser_2->setPlainText(QString::number(correct_num));
 
         task_num = 0;
         oper_num = 0;
@@ -240,7 +257,7 @@ void MainWindow::on_pushButton_2_clicked()
         wrong_idd =-1;
         correct_num = 0;
         correct_rate = 0;
-
+        ui->textEdit->clear();
     }
 }
 

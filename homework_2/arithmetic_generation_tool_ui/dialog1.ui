@@ -34,9 +34,22 @@
     <rect>
      <x>15</x>
      <y>11</y>
-     <width>951</width>
+     <width>821</width>
      <height>511</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>60</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清空</string>
    </property>
   </widget>
  </widget>

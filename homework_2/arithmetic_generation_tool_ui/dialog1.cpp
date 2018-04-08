@@ -8,7 +8,7 @@ Dialog1::Dialog1(QWidget *parent) :
     ui(new Ui::Dialog1)
 {
     ui->setupUi(this);
-    QStandardItemModel *wrong_answer_model = new QStandardItemModel(this);
+    wrong_answer_model = new QStandardItemModel(this);
     wrong_answer_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("错题序号")));
     wrong_answer_model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("题目")));
     wrong_answer_model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("你的答案")));
@@ -63,4 +63,13 @@ Dialog1::Dialog1(QWidget *parent) :
 Dialog1::~Dialog1()
 {
     delete ui;
+}
+
+void Dialog1::on_pushButton_clicked()
+{
+    ofstream file;
+    file.open("./wrong_answer.txt", ios::out | ios::trunc);
+    file.close();
+
+    wrong_answer_model->removeRows(0,wrong_answer_model->rowCount());
 }

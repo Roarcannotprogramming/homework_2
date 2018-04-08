@@ -33,6 +33,7 @@ public:
     //bool one;
     ofstream wrong_answers;
     ofstream history;
+    ofstream share;
 
 
 private slots:

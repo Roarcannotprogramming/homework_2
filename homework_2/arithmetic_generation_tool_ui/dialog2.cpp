@@ -1,15 +1,18 @@
 #include "dialog2.h"
 #include "ui_dialog2.h"
+using namespace std;
 
 Dialog2::Dialog2(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog2)
 {
     ui->setupUi(this);
-    QStandardItemModel *history_model = new QStandardItemModel(this);
-    history_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("总题数")));
-    history_model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("正确题数")));
-    history_model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("正确率")));
+    history_model = new QStandardItemModel(this);
+
+
+    history_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("zongtishu")));
+    history_model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("zhengquetishu")));
+    history_model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("zhengquelv")));
     //history_model->setHorizontalHeaderItem(3, new QStandardItem(QObject::tr("正确答案")));
     ui->tableView->setModel(history_model);
 
@@ -62,4 +65,15 @@ Dialog2::Dialog2(QWidget *parent) :
 Dialog2::~Dialog2()
 {
     delete ui;
+}
+
+void Dialog2::on_pushButton_clicked()
+{
+    ofstream file;
+    file.open("./history.txt", ios::out | ios::trunc);
+    file.close();
+
+    history_model->removeRows(0,history_model->rowCount());
+
+
 }
