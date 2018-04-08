@@ -132,6 +132,9 @@ void MainWindow::on_actionewwewe_triggered()
     //index = ui->stackedWidget1->currentIndex();
     //if(index!=1){
     index = 1;
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    ui->lineEdit_3->clear();
     ui->stackedWidget1->setCurrentIndex(index);
     //}
 }
@@ -143,7 +146,7 @@ void MainWindow::on_actioncuotiben_triggered()
     wrong_answers << question << " " << result <<" "<< answer << endl ;
     wrong_answers.close();*/
     Dialog1 *dlg = new Dialog1(this);
-    dlg->show();
+    dlg->exec();
 }
 
 void MainWindow::on_actionlishijiu_triggered()
@@ -211,4 +214,10 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
     qApp->quit();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    Dialog1 *dlg = new Dialog1(this);
+    dlg->exec();
 }
