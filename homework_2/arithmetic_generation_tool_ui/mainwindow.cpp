@@ -10,16 +10,18 @@ MainWindow::MainWindow(QWidget *parent) :
     time1 = 20;
     timer=nullptr;
     //one = true;
+    index = 0;
+    count = 0;
     task_num = 0;
     oper_num = 0;
     max_num = 0;
-    index = 0;
-    count = 0;
     task_num_0 = 0;
     result = -1;
     question = "";
     answer = -1;
     wrong_idd =-1;
+    correct_num = 0;
+    correct_rate = 0;
 }
 
 MainWindow::~MainWindow()
@@ -113,12 +115,31 @@ void MainWindow::timeout(){
             }
             else{
                 timer->stop();
+
+                correct_rate = (double)correct_num / (double)task_num_0 ;
+
+                history.open("./history.txt",ios::app);
+                history << task_num_0 << "\n" << correct_num << "\n" << correct_rate << endl;
+                history.close();
+
                 index++;
                 if(index == count){
                     index =0;
                 }
                 ui->stackedWidget1->setCurrentIndex(index);
                 ui->textBrowser_3->setPlainText(QString::number(task_num_0));
+
+                task_num = 0;
+                oper_num = 0;
+                max_num = 0;
+                task_num_0 = 0;
+                result = -1;
+                question = "";
+                answer = -1;
+                wrong_idd =-1;
+                correct_num = 0;
+                correct_rate = 0;
+
             }
     }
 
@@ -151,7 +172,8 @@ void MainWindow::on_actioncuotiben_triggered()
 
 void MainWindow::on_actionlishijiu_triggered()
 {
-
+    Dialog2 *dlg = new Dialog2(this);
+    dlg->exec();
 }
 
 void MainWindow::on_actionshuchuchengji_triggered()
@@ -169,6 +191,9 @@ void MainWindow::on_pushButton_2_clicked()
         wrong_idd = task_num_0-task_num+1;
         wrong_answers << wrong_idd <<"\n"<< question << "\n" << result <<"\n"<< answer << endl ;
         wrong_answers.close();
+    }
+    else{
+        correct_num++;
     }
     result =-1;
     question = "";
@@ -188,14 +213,34 @@ void MainWindow::on_pushButton_2_clicked()
         ui->textBrowser->setPlainText(QString::fromStdString(question));
         ui->textEdit->clear();
     }
-    else{
+    else{            //答题结束
         timer->stop();
+
+        correct_rate = (double)correct_num / (double)task_num_0 ;
+
+
+        history.open("./history.txt",ios::app);
+        history << task_num_0 << "\n" << correct_num << "\n" << correct_rate << endl;
+        history.close();
+
         index++;
         if(index == count){
             index =0;
         }
         ui->stackedWidget1->setCurrentIndex(index);
         ui->textBrowser_3->setPlainText(QString::number(task_num_0));
+
+        task_num = 0;
+        oper_num = 0;
+        max_num = 0;
+        task_num_0 = 0;
+        result = -1;
+        question = "";
+        answer = -1;
+        wrong_idd =-1;
+        correct_num = 0;
+        correct_rate = 0;
+
     }
 }
 

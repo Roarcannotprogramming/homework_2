@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "dialog1.h"
+#include "dialog2.h"
 #include <QLineEdit>
 #include <QtGui/QtGui>
 #include <QString>
@@ -31,6 +32,7 @@ public:
     int time1;
     //bool one;
     ofstream wrong_answers;
+    ofstream history;
 
 
 private slots:
@@ -64,6 +66,8 @@ private:
     string question;
     double result;
     double answer;
+    int correct_num;
+    double correct_rate;
 };
 
 #endif // MAINWINDOW_H
