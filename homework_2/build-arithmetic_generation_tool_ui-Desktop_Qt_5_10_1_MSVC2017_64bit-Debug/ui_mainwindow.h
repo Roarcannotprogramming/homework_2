@@ -22,6 +22,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
@@ -59,6 +60,10 @@ public:
     QLabel *label_7;
     QLabel *label_8;
     QLabel *label_9;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QRadioButton *radioButton_3;
+    QLabel *label_12;
     QWidget *page_2;
     QTextBrowser *textBrowser;
     QTextEdit *textEdit;
@@ -128,29 +133,41 @@ public:
         page->setObjectName(QStringLiteral("page"));
         label = new QLabel(page);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(120, 30, 301, 171));
+        label->setGeometry(QRect(120, 10, 301, 171));
         pushButton = new QPushButton(page);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(350, 220, 151, 61));
         pushButton->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit = new QLineEdit(page);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(160, 190, 91, 31));
+        lineEdit->setGeometry(QRect(160, 160, 91, 31));
         lineEdit_2 = new QLineEdit(page);
         lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(160, 240, 91, 31));
+        lineEdit_2->setGeometry(QRect(160, 200, 91, 31));
         lineEdit_3 = new QLineEdit(page);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(160, 290, 91, 31));
+        lineEdit_3->setGeometry(QRect(160, 240, 91, 31));
         label_7 = new QLabel(page);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(70, 200, 72, 15));
+        label_7->setGeometry(QRect(70, 170, 72, 15));
         label_8 = new QLabel(page);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(50, 250, 101, 20));
+        label_8->setGeometry(QRect(50, 210, 101, 20));
         label_9 = new QLabel(page);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(50, 300, 101, 20));
+        label_9->setGeometry(QRect(50, 250, 101, 20));
+        radioButton = new QRadioButton(page);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(150, 310, 115, 19));
+        radioButton_2 = new QRadioButton(page);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(220, 310, 115, 19));
+        radioButton_3 = new QRadioButton(page);
+        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setGeometry(QRect(320, 310, 115, 19));
+        label_12 = new QLabel(page);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setGeometry(QRect(40, 310, 101, 21));
         stackedWidget1->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
@@ -256,6 +273,10 @@ public:
         label_7->setText(QApplication::translate("MainWindow", "\351\242\230\347\233\256\346\225\260\351\207\217\357\274\232", nullptr));
         label_8->setText(QApplication::translate("MainWindow", "\346\234\200\345\244\232\350\277\220\347\256\227\346\254\241\346\225\260\357\274\232", nullptr));
         label_9->setText(QApplication::translate("MainWindow", "\346\225\260\345\200\274\346\234\200\345\244\247\350\214\203\345\233\264\357\274\232", nullptr));
+        radioButton->setText(QApplication::translate("MainWindow", "\345\212\240\345\207\217", nullptr));
+        radioButton_2->setText(QApplication::translate("MainWindow", "\345\212\240\345\207\217\344\271\230\351\231\244", nullptr));
+        radioButton_3->setText(QApplication::translate("MainWindow", "\345\212\240\345\207\217\344\271\230\351\231\244\344\271\230\346\226\271", nullptr));
+        label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">\350\277\220\347\256\227\347\254\246\347\247\215\347\261\273:</p></body></html>", nullptr));
         textBrowser->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

@@ -2,6 +2,10 @@
 #define DIALOG3_H
 
 #include <QDialog>
+#include <QButtonGroup>
+#include "mainwindow.h"
+
+using namespace std;
 
 namespace Ui {
 class Dialog3;
@@ -17,6 +21,12 @@ public:
 
 private:
     Ui::Dialog3 *ui;
+
+    QButtonGroup *type;
+
+    int opr_num;
+    int min_num,max_num;
+    int accuracy;
 };
 
 #endif // DIALOG3_H

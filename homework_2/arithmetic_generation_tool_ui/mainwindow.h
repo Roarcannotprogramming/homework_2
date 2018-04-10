@@ -13,6 +13,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <QButtonGroup>
+#include "dialog3.h"
+
 using namespace std;
 
 namespace Ui {
@@ -57,6 +60,8 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_6_clicked();
+
 private:
     Ui::MainWindow *ui;
     //QStackedWidget *main_stack_widget;
@@ -69,6 +74,9 @@ private:
     double answer;
     int correct_num;
     double correct_rate;
+    int calc_type_int;
+
+    QButtonGroup *calc_type;
 };
 
 #endif // MAINWINDOW_H

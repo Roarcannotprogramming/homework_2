@@ -137,7 +137,7 @@
         <property name="geometry">
          <rect>
           <x>120</x>
-          <y>30</y>
+          <y>10</y>
           <width>301</width>
           <height>171</height>
          </rect>
@@ -150,9 +150,9 @@
         <property name="geometry">
          <rect>
           <x>350</x>
-          <y>220</y>
-          <width>151</width>
-          <height>61</height>
+          <y>150</y>
+          <width>161</width>
+          <height>101</height>
          </rect>
         </property>
         <property name="toolTip">
@@ -172,7 +172,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>190</y>
+          <y>160</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -182,7 +182,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>240</y>
+          <y>200</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -192,7 +192,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>290</y>
+          <y>240</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -202,7 +202,7 @@
         <property name="geometry">
          <rect>
           <x>70</x>
-          <y>200</y>
+          <y>170</y>
           <width>72</width>
           <height>15</height>
          </rect>
@@ -215,7 +215,7 @@
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>250</y>
+          <y>210</y>
           <width>101</width>
           <height>20</height>
          </rect>
@@ -228,13 +228,78 @@
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>300</y>
+          <y>250</y>
           <width>101</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
          <string>数值最大范围：</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>310</y>
+          <width>115</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加减</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>310</y>
+          <width>115</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加减乘除</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_3">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>310</y>
+          <width>115</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>加减乘除乘方</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>310</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;运算符种类:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>300</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>高级选项</string>
         </property>
        </widget>
       </widget>

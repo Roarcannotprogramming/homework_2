@@ -22,6 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
     wrong_idd =-1;
     correct_num = 0;
     correct_rate = 0;
+    calc_type_int = 0;
+
+    calc_type = new QButtonGroup(this);
+    calc_type->addButton(ui->radioButton,0);
+    calc_type->addButton(ui->radioButton_2,1);
+    calc_type->addButton(ui->radioButton_3,2);
+    ui->radioButton->setChecked(true);
 }
 
 MainWindow::~MainWindow()
@@ -32,17 +39,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    if(!ui->lineEdit->text().isEmpty() && !ui->lineEdit_2->text().isEmpty() && !ui->lineEdit_3->text().isEmpty()){
+    if(!ui->lineEdit->text().isEmpty() && !ui->lineEdit_2->text().isEmpty() /*&& !ui->lineEdit_3->text().isEmpty()*/){
         task_num = ui->lineEdit->text().toInt();
         task_num_0=task_num;
         oper_num = ui->lineEdit_2->text().toInt();
-        max_num = ui->lineEdit_3->text().toInt();
+        //max_num = ui->lineEdit_3->text().toInt();
     }
     else{
         QMessageBox *box_ = new QMessageBox(this);
         box_->warning(this, tr("温馨提示"), tr("请填写题目数，最多运算次数，数值最大范围！"), QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
+
+    if(ui->radioButton_3->isChecked()){
+        calc_type_int = 2;
+    }
+    else if(ui->radioButton_2->isChecked()){
+        calc_type_int =1;
+    }
+    else {
+        calc_type_int =0;
+    }
+
     //task_num_0=task_num;
     //oper_num = ui->lineEdit_2->text().toInt();
     //max_num = ui->lineEdit_3->text().toInt();
@@ -156,7 +174,7 @@ void MainWindow::on_actionewwewe_triggered()
     index = 1;
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
-    ui->lineEdit_3->clear();
+    //ui->lineEdit_3->clear();
     ui->stackedWidget1->setCurrentIndex(index);
     //}
 }
@@ -270,7 +288,7 @@ void MainWindow::on_pushButton_4_clicked()
     ui->stackedWidget1->setCurrentIndex(index);
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
-    ui->lineEdit_3->clear();
+    //ui->lineEdit_3->clear();
 }
 
 void MainWindow::on_pushButton_5_clicked()
@@ -281,5 +299,11 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     Dialog1 *dlg = new Dialog1(this);
+    dlg->exec();
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    Dialog3 *dlg = new Dialog3(this);
     dlg->exec();
 }
