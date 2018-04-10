@@ -17,8 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     max_num = 0;
     task_num_0 = 0;
     result = -1;
+    result_str = "null";
     question = "";
     answer = -1;
+    answer_str = "null";
     wrong_idd =-1;
     correct_num = 0;
     correct_rate = 0;
@@ -29,6 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
     calc_type->addButton(ui->radioButton_2,1);
     calc_type->addButton(ui->radioButton_3,2);
     ui->radioButton->setChecked(true);
+
+    opr_num = 5;
+    min_num = 0;
+    max_num =100;
+    accuracy = 2;
+    flag_choose_advance = false;
 }
 
 MainWindow::~MainWindow()
@@ -39,6 +47,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    if(!flag_choose_advance){   //高级选项设置
+        opr_num = 5;
+        min_num = 0;
+        max_num =100;
+        accuracy = 2;
+    }
+    else{
+        opr_num = Dialog3::get_opr_num();
+        min_num = Dialog3::get_min_num();
+        max_num = Dialog3::get_max_num();
+        accuracy = Dialog3::get_accuracy();
+    }
+
+
     if(!ui->lineEdit->text().isEmpty() && !ui->lineEdit_2->text().isEmpty() /*&& !ui->lineEdit_3->text().isEmpty()*/){
         task_num = ui->lineEdit->text().toInt();
         task_num_0=task_num;
@@ -77,7 +99,9 @@ void MainWindow::on_pushButton_clicked()
     ui->label_2->setText(QString::number(task_num_0-task_num+1));
 
     question = "the_first_q";
+    //question = get_question(API_question);
     answer = 2;
+    //answer = get_ans(API_answer);
     ui->textBrowser->setPlainText(QString::fromStdString(question));//输入题目
 
     timer= new QTimer;
@@ -96,17 +120,20 @@ void MainWindow::timeout(){
 
 
         result = -1;
+        result_str = "null";
         wrong_idd = task_num_0-task_num+1;
 
         //task_num--;
 
         wrong_answers.open("./wrong_answer.txt",ios::app);    //添加到错题本
-        wrong_answers << wrong_idd <<"\n"<< question << "\n" << result << "\n" << answer << endl ;
+        wrong_answers << wrong_idd <<"\n"<< question << "\n" << result_str << "\n" << answer_str << endl ;
         wrong_answers.close();
 
         result =-1;              //维护
+        result_str = "null";
         question = "";
         answer = -1;
+        answer_str = "";
         wrong_idd = -1;
 
         QMessageBox *box = new QMessageBox(this);
@@ -126,6 +153,7 @@ void MainWindow::timeout(){
                 question = "time_out_ok?";
                 //answer = 输入答案---------------------
                 answer = 2;
+                answer_str = "";
                 ui->label_2->setText(QString::number(task_num_0-task_num+1));
                 ui->textBrowser->setPlainText(QString::fromStdString(question));
                 ui->textEdit->clear();
@@ -153,8 +181,10 @@ void MainWindow::timeout(){
                 max_num = 0;
                 task_num_0 = 0;
                 result = -1;
-                question = "";
+                result_str = "null";
+                question = "null";
                 answer = -1;
+                answer_str ="null";
                 wrong_idd =-1;
                 correct_num = 0;
                 correct_rate = 0;
@@ -199,20 +229,23 @@ void MainWindow::on_actionshuchuchengji_triggered()
 void MainWindow::on_pushButton_2_clicked()
 {
 
-    result = ui->textEdit->toPlainText().toDouble();//获取结果
+    //result = ui->textEdit->toPlainText().toDouble();//获取结果
+    result_str = ui->textEdit->toPlainText().toStdString();
 
-    if(result - answer >0.0001 || result - answer < -0.0001){           //加入错题本
+    if(result_str.compare(answer_str) != 0){           //加入错题本
         wrong_answers.open("./wrong_answer.txt",ios::app);
         wrong_idd = task_num_0-task_num+1;
-        wrong_answers << wrong_idd <<"\n"<< question << "\n" << result <<"\n"<< answer << endl ;
+        wrong_answers << wrong_idd <<"\n"<< question << "\n" << result_str <<"\n"<< answer_str << endl ;
         wrong_answers.close();
     }
     else{
         correct_num++;
     }
     result =-1;
-    question = "";
+    result_str ="null";
+    question = "null";
     answer = -1;
+    answer_str = "null";
     wrong_idd=-1;
 
 
@@ -224,6 +257,7 @@ void MainWindow::on_pushButton_2_clicked()
         question = "aaaaaaaaaaaaaaaaaa";
         //answer = "输入答案-------------------"
         answer = 2;
+        answer_str= "null";
         ui->label_2->setText(QString::number(task_num_0-task_num+1));
         ui->textBrowser->setPlainText(QString::fromStdString(question));
         ui->textEdit->clear();
@@ -270,8 +304,10 @@ void MainWindow::on_pushButton_2_clicked()
         max_num = 0;
         task_num_0 = 0;
         result = -1;
-        question = "";
+        result_str = "null";
+        question = "null";
         answer = -1;
+        answer_str = "null";
         wrong_idd =-1;
         correct_num = 0;
         correct_rate = 0;
@@ -304,6 +340,15 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_6_clicked()
 {
+    flag_choose_advance = true;
     Dialog3 *dlg = new Dialog3(this);
     dlg->exec();
+}
+
+void MainWindow::get_arith(const string &arith){
+    question = arith;
+}
+
+void MainWindow::get_ans(const string &ans){
+    answer = ans;
 }

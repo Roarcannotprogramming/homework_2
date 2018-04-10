@@ -64,6 +64,7 @@ public:
     QRadioButton *radioButton_2;
     QRadioButton *radioButton_3;
     QLabel *label_12;
+    QPushButton *pushButton_6;
     QWidget *page_2;
     QTextBrowser *textBrowser;
     QTextEdit *textEdit;
@@ -136,7 +137,7 @@ public:
         label->setGeometry(QRect(120, 10, 301, 171));
         pushButton = new QPushButton(page);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(350, 220, 151, 61));
+        pushButton->setGeometry(QRect(350, 150, 161, 101));
         pushButton->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit = new QLineEdit(page);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
@@ -168,6 +169,9 @@ public:
         label_12 = new QLabel(page);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setGeometry(QRect(40, 310, 101, 21));
+        pushButton_6 = new QPushButton(page);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setGeometry(QRect(450, 300, 93, 28));
         stackedWidget1->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
@@ -277,6 +281,7 @@ public:
         radioButton_2->setText(QApplication::translate("MainWindow", "\345\212\240\345\207\217\344\271\230\351\231\244", nullptr));
         radioButton_3->setText(QApplication::translate("MainWindow", "\345\212\240\345\207\217\344\271\230\351\231\244\344\271\230\346\226\271", nullptr));
         label_12->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">\350\277\220\347\256\227\347\254\246\347\247\215\347\261\273:</p></body></html>", nullptr));
+        pushButton_6->setText(QApplication::translate("MainWindow", "\351\253\230\347\272\247\351\200\211\351\241\271", nullptr));
         textBrowser->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

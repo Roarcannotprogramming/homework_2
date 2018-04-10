@@ -81,7 +81,7 @@
   <widget class="QRadioButton" name="radioButton_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>110</y>
      <width>115</width>
      <height>19</height>
@@ -94,7 +94,7 @@
   <widget class="QRadioButton" name="radioButton_3">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>290</x>
      <y>110</y>
      <width>115</width>
      <height>19</height>
@@ -196,8 +196,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>438</x>
+     <y>354</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -212,8 +212,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>506</x>
+     <y>360</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
