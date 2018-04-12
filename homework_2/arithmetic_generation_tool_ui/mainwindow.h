@@ -15,11 +15,17 @@
 #include <string>
 #include <QButtonGroup>
 #include "dialog3.h"
+#include <vector>
+
 /*以下为API接口*/
 #include "core.h"
 //end API
 
+class fomularCore;
+
 using namespace std;
+
+class Dialog3;
 
 namespace Ui {
 class MainWindow;
@@ -85,9 +91,19 @@ private:
     int calc_type_int;
     int opr_num;
     int min_num;
-    int max_num;
+    //int max_num;
     int accuracy;
+    int type_int;
     bool flag_choose_advance;
+    Dialog3 *dlg3;
+
+
+    //API
+    fomularCore *core;
+    vector<string> out_api,res_api;
+    string ops_api;
+    bool fraction;
+    int count_api;
 
     //string question;
 

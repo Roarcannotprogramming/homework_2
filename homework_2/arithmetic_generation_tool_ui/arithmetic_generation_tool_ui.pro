@@ -6,7 +6,7 @@
 
 QT       += core gui
 QT       += sql
-LIBS += -L./-lCOREdll
+LIBS += E:/Project_Files/homework_2/arithmetic_generation_tool_ui/COREdll.dll
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

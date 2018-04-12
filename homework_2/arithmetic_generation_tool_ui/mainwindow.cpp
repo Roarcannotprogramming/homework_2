@@ -36,7 +36,11 @@ MainWindow::MainWindow(QWidget *parent) :
     min_num = 0;
     max_num =100;
     accuracy = 2;
+    type_int = 0;
     flag_choose_advance = false;
+
+    //API
+    core = new fomularCore;
 }
 
 MainWindow::~MainWindow()
@@ -52,12 +56,14 @@ void MainWindow::on_pushButton_clicked()
         min_num = 0;
         max_num =100;
         accuracy = 2;
+        type_int = 0;
     }
     else{
-        opr_num = Dialog3::get_opr_num();
-        min_num = Dialog3::get_min_num();
-        max_num = Dialog3::get_max_num();
-        accuracy = Dialog3::get_accuracy();
+        opr_num = dlg3->get_opr_num();
+        min_num = dlg3->get_min_num();
+        max_num = dlg3->get_max_num();
+        accuracy = dlg3->get_accuracy();
+        type_int = dlg3->get_type_int();
     }
 
 
@@ -69,7 +75,7 @@ void MainWindow::on_pushButton_clicked()
     }
     else{
         QMessageBox *box_ = new QMessageBox(this);
-        box_->warning(this, tr("温馨提示"), tr("请填写题目数，最多运算次数，数值最大范围！"), QMessageBox::Yes, QMessageBox::Yes);
+        box_->warning(this, tr("温馨提示"), tr("请填写题目数，最多运算次数！"), QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
 
@@ -82,6 +88,43 @@ void MainWindow::on_pushButton_clicked()
     else {
         calc_type_int =0;
     }
+
+
+
+
+    //API
+    if(calc_type_int = 2){
+        ops_api = "+-*/^()";
+    }
+    else if(calc_type_int = 1){
+        ops_api = "+-*/()";
+    }
+    else{
+        ops_api = "+-()";
+    }
+
+    if(type_int = 2){
+        fraction = true;
+    }
+    else if(type_int = 1){
+        fraction = false;
+    }
+    else{
+        fraction = false;
+        accuracy = 0;
+    }
+
+
+    /*core->setting(task_num_0,opr_num,max_num,ops_api,fraction,accuracy);
+    out_api = core->Generate();
+    res_api = core->getRes();*/
+
+
+    //END OF API
+
+
+
+
 
     //task_num_0=task_num;
     //oper_num = ui->lineEdit_2->text().toInt();
@@ -99,8 +142,17 @@ void MainWindow::on_pushButton_clicked()
     ui->label_2->setText(QString::number(task_num_0-task_num+1));
 
     question = "the_first_q";
+
+    //API
+    question = out_api[count_api];
+    //answer = 2;
+    answer_str = res_api[count_api];
+    count_api++;
+    //END OF API
+
     //question = get_question(API_question);
-    answer = 2;
+
+
     //answer = get_ans(API_answer);
     ui->textBrowser->setPlainText(QString::fromStdString(question));//输入题目
 
@@ -131,9 +183,9 @@ void MainWindow::timeout(){
 
         result =-1;              //维护
         result_str = "null";
-        question = "";
+        question = "null";
         answer = -1;
-        answer_str = "";
+        answer_str = "null";
         wrong_idd = -1;
 
         QMessageBox *box = new QMessageBox(this);
@@ -150,10 +202,18 @@ void MainWindow::timeout(){
             task_num--;
             //进入下一题!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             if(task_num != 0){
-                question = "time_out_ok?";
+                /*question = "time_out_ok?";
                 //answer = 输入答案---------------------
                 answer = 2;
-                answer_str = "";
+                answer_str = "";*/
+
+                //API
+                question = out_api[count_api];
+                //answer = 2;
+                answer_str = res_api[count_api];
+                count_api++;
+                //END OF API
+
                 ui->label_2->setText(QString::number(task_num_0-task_num+1));
                 ui->textBrowser->setPlainText(QString::fromStdString(question));
                 ui->textEdit->clear();
@@ -254,10 +314,18 @@ void MainWindow::on_pushButton_2_clicked()
 
     if(task_num != 0){
         time1=20;
-        question = "aaaaaaaaaaaaaaaaaa";
+        /*question = "aaaaaaaaaaaaaaaaaa";
         //answer = "输入答案-------------------"
         answer = 2;
-        answer_str= "null";
+        answer_str= "null";*/
+
+        //API
+        question = out_api[count_api];
+        //answer = 2;
+        answer_str = res_api[count_api];
+        count_api++;
+        //END OF API
+
         ui->label_2->setText(QString::number(task_num_0-task_num+1));
         ui->textBrowser->setPlainText(QString::fromStdString(question));
         ui->textEdit->clear();
@@ -341,8 +409,8 @@ void MainWindow::on_pushButton_3_clicked()
 void MainWindow::on_pushButton_6_clicked()
 {
     flag_choose_advance = true;
-    Dialog3 *dlg = new Dialog3(this);
-    dlg->exec();
+    dlg3 = new Dialog3(this);
+    dlg3->exec();
 }
 
 void MainWindow::get_arith(const string &arith){
@@ -350,5 +418,5 @@ void MainWindow::get_arith(const string &arith){
 }
 
 void MainWindow::get_ans(const string &ans){
-    answer = ans;
+    answer_str = ans;
 }

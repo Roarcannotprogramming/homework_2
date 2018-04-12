@@ -62,6 +62,16 @@ void Dialog3::on_buttonBox_accepted()
     if(!ui->lineEdit_4->text().isEmpty()){
         accuracy = ui->lineEdit_4->text().toInt();
     }
+
+    if(ui->radioButton_3->isChecked()){
+        type_int = 2;
+    }
+    else if(ui->radioButton_2->isChecked()){
+        type_int = 1;
+    }
+    else{
+        type_int = 0;
+    }
 }
 
 int Dialog3::get_opr_num(){
@@ -78,4 +88,8 @@ int Dialog3::get_max_num(){
 
 int Dialog3::get_accuracy(){
     return accuracy;
+}
+
+int Dialog3::get_type_int(){
+    return type_int;
 }

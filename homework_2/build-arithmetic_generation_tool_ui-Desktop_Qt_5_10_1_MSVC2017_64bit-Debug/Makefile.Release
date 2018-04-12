@@ -17,7 +17,7 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStri
 INCPATH       = -I..\arithmetic_generation_tool_ui -I. -ID:\QT\5.10.1\msvc2017_64\include -ID:\QT\5.10.1\msvc2017_64\include\QtWidgets -ID:\QT\5.10.1\msvc2017_64\include\QtGui -ID:\QT\5.10.1\msvc2017_64\include\QtANGLE -ID:\QT\5.10.1\msvc2017_64\include\QtSql -ID:\QT\5.10.1\msvc2017_64\include\QtCore -Irelease -I. -I\include -ID:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:D:\QT\5.10.1\msvc2017_64\lib D:\QT\5.10.1\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:D:\QT\5.10.1\msvc2017_64\lib D:\QT\5.10.1\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib /LIBPATH:-lCOREdll D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.lib 
 QMAKE         = D:\QT\5.10.1\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
@@ -532,6 +532,7 @@ release\moc_mainwindow.cpp: D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMainWind
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		..\arithmetic_generation_tool_ui\dialog3.h \
 		..\arithmetic_generation_tool_ui\mainwindow.h \
+		..\arithmetic_generation_tool_ui\core.h \
 		..\arithmetic_generation_tool_ui\mainwindow.h \
 		release\moc_predefs.h \
 		D:\QT\5.10.1\msvc2017_64\bin\moc.exe
@@ -1106,6 +1107,7 @@ release\moc_dialog3.cpp: D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialog \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qmessagebox.h \
 		..\arithmetic_generation_tool_ui\dialog3.h \
+		..\arithmetic_generation_tool_ui\core.h \
 		..\arithmetic_generation_tool_ui\dialog3.h \
 		release\moc_predefs.h \
 		D:\QT\5.10.1\msvc2017_64\bin\moc.exe
@@ -1489,6 +1491,7 @@ release\main.obj: ..\arithmetic_generation_tool_ui\main.cpp ../arithmetic_genera
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		../arithmetic_generation_tool_ui/dialog3.h \
+		..\arithmetic_generation_tool_ui\core.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h
@@ -1836,6 +1839,7 @@ release\mainwindow.obj: ..\arithmetic_generation_tool_ui\mainwindow.cpp ../arith
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		../arithmetic_generation_tool_ui/dialog3.h \
+		..\arithmetic_generation_tool_ui\core.h \
 		ui_mainwindow.h
 
 release\dialog1.obj: ..\arithmetic_generation_tool_ui\dialog1.cpp ../arithmetic_generation_tool_ui/dialog1.h \
@@ -2403,6 +2407,7 @@ release\dialog3.obj: ..\arithmetic_generation_tool_ui\dialog3.cpp ../arithmetic_
 		D:\QT\5.10.1\msvc2017_64\include\QtCore\QTimer \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		..\arithmetic_generation_tool_ui\core.h \
 		ui_dialog3.h
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 

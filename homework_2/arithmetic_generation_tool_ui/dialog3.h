@@ -27,6 +27,7 @@ public:
     int get_min_num();
     int get_max_num();
     int get_accuracy();
+    int get_type_int();
 
 private slots:
     void on_radioButton_2_toggled(bool checked);
@@ -41,6 +42,7 @@ private:
     int opr_num;
     int min_num,max_num;
     int accuracy;
+    int type_int;
 };
 
 #endif // DIALOG3_H
