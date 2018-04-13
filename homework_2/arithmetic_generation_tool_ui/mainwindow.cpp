@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //初始化
     time1 = 20;
     timer=nullptr;
     //one = true;
@@ -49,7 +51,7 @@ MainWindow::~MainWindow()
     //delete main_stack_widget;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
 {
     if(!flag_choose_advance){   //高级选项设置
         opr_num = 5;
@@ -67,6 +69,7 @@ void MainWindow::on_pushButton_clicked()
     }
 
 
+    //强迫性填写两个单元
     if(!ui->lineEdit->text().isEmpty() && !ui->lineEdit_2->text().isEmpty() /*&& !ui->lineEdit_3->text().isEmpty()*/){
         task_num = ui->lineEdit->text().toInt();
         task_num_0=task_num;
@@ -79,6 +82,7 @@ void MainWindow::on_pushButton_clicked()
         return;
     }
 
+    //选择运算符种类
     if(ui->radioButton_3->isChecked()){
         calc_type_int = 2;
     }
@@ -123,13 +127,7 @@ void MainWindow::on_pushButton_clicked()
     //END OF API
 
 
-
-
-
-    //task_num_0=task_num;
-    //oper_num = ui->lineEdit_2->text().toInt();
-    //max_num = ui->lineEdit_3->text().toInt();
-    //task_num--;
+    //转换到答题界面
     count = ui->stackedWidget1->count();
     index = ui->stackedWidget1->currentIndex();
     index++;
@@ -144,36 +142,36 @@ void MainWindow::on_pushButton_clicked()
     question = "the_first_q";
 
     //API
+    //设置题目和答案
     question = out_api[count_api];
-    //answer = 2;
     answer_str = res_api[count_api];
     count_api++;
     //END OF API
 
-    //question = get_question(API_question);
 
 
-    //answer = get_ans(API_answer);
+    //显示题目
     ui->textBrowser->setPlainText(QString::fromStdString(question));//输入题目
 
+    //启动计时
     timer= new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
-    timer->start(1000);
+    timer->start(1000); //每次计时1s，1s结束后触发槽timeout()
 }
 
 //static int time1 = 20 ;
 
 void MainWindow::timeout(){
 
-    if(time1!=0){
+    if(time1!=0){ //如果时间还没到20s
         time1--;
-        ui->lcdNumber->display(QString::number(time1,10));
+        ui->lcdNumber->display(QString::number(time1,10));//显示十进制时间
     }else{
 
 
-        result = -1;
-        result_str = "null";
-        wrong_idd = task_num_0-task_num+1;
+        result = -1; //不使用，使用result_str
+        result_str = "null"; //因为时间到，所以result = null
+        wrong_idd = task_num_0-task_num+1; //错题序号
 
         //task_num--;
 
@@ -188,15 +186,10 @@ void MainWindow::timeout(){
         answer_str = "null";
         wrong_idd = -1;
 
+        //生成时间到的提示框
         QMessageBox *box = new QMessageBox(this);
 
-            //if(QMessageBox::Yes == box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes));
-            box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes);
-            /*{
-                ui->label_2->setText(QString::number(task_num_0-task_num+1));
-                ui->textBrowser->setPlainText("123"); //输入题目
-                ui->textEdit->clear();
-            }*/
+        box->warning(this,tr("温馨提示"),tr("时间到！"),QMessageBox::Yes,QMessageBox::Yes);
 
 
             task_num--;
@@ -209,25 +202,48 @@ void MainWindow::timeout(){
 
                 //API
                 question = out_api[count_api];
-                //answer = 2;
                 answer_str = res_api[count_api];
                 count_api++;
                 //END OF API
 
+                //显示新一题
                 ui->label_2->setText(QString::number(task_num_0-task_num+1));
                 ui->textBrowser->setPlainText(QString::fromStdString(question));
                 ui->textEdit->clear();
                 time1 = 20;
             }
             else{
+                //如果已经答完所有题
                 timer->stop();
 
+                //计算正确率
                 correct_rate = (double)correct_num / (double)task_num_0 ;
 
+                //生成历史记录
                 history.open("./history.txt",ios::app);
                 history << task_num_0 << "\n" << correct_num << "\n" << correct_rate << endl;
                 history.close();
 
+                //生成评价分享
+                share.open("./share.txt",ios::out);
+                if(correct_rate > 0.95){
+                    share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Congratulations! You get a 4.3" <<endl ;
+                }
+                else if(correct_rate > 0.9){
+                    share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Good job! You get a 4.0" <<endl ;
+                }
+                else if(correct_rate > 0.85){
+                    share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Ah-ha! You get a 3.7" <<endl ;
+                }
+                else if(correct_rate > 0.82){
+                    share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Come on! You get a 3.3" <<endl ;
+                }
+                else{
+                    share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, only " << correct_num << u8" are correct! " << u8"Just ask you textbook for some help! " <<endl ;
+                }
+                share.close();
+
+                //转换到答题结束页面
                 index++;
                 if(index == count){
                     index =0;
@@ -236,6 +252,7 @@ void MainWindow::timeout(){
                 ui->textBrowser_3->setPlainText(QString::number(task_num_0));
                 ui->textBrowser_2->setPlainText(QString::number(correct_num));
 
+                //维护
                 task_num = 0;
                 oper_num = 0;
                 max_num = 0;
@@ -254,45 +271,45 @@ void MainWindow::timeout(){
 
 }
 
-void MainWindow::on_actionewwewe_triggered()
+void MainWindow::on_actionewwewe_triggered()//点击了新建答题
 {
+    //如果计时器打开，则停止
     if(timer && timer->isActive())
         timer->stop();
-    //count = ui->stackedWidget1->count();
-    //index = ui->stackedWidget1->currentIndex();
-    //if(index!=1){
+
+    //转到生成界面
     index = 1;
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
-    //ui->lineEdit_3->clear();
     ui->stackedWidget1->setCurrentIndex(index);
     //}
 }
 
-void MainWindow::on_actioncuotiben_triggered()
+void MainWindow::on_actioncuotiben_triggered() //点击错题本
 {
     Dialog1 *dlg = new Dialog1(this);
     dlg->exec();
 }
 
-void MainWindow::on_actionlishijiu_triggered()
+void MainWindow::on_actionlishijiu_triggered()//点击历史记录
 {
     Dialog2 *dlg = new Dialog2(this);
     dlg->exec();
 }
 
-void MainWindow::on_actionshuchuchengji_triggered()
+void MainWindow::on_actionshuchuchengji_triggered()//点击输出成绩
 {
 
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButton_2_clicked() //点击下一题
 {
 
-    //result = ui->textEdit->toPlainText().toDouble();//获取结果
+    //result = ui->textEdit->toPlainText().toDouble();
+    //获取结果
     result_str = ui->textEdit->toPlainText().toStdString();
 
-    if(result_str.compare(answer_str) != 0){           //加入错题本
+    if(result_str.compare(answer_str) != 0){           //是否答对，如否加入错题本
         wrong_answers.open("./wrong_answer.txt",ios::app);
         wrong_idd = task_num_0-task_num+1;
         wrong_answers << wrong_idd <<"\n"<< question << "\n" << result_str <<"\n"<< answer_str << endl ;
@@ -301,6 +318,8 @@ void MainWindow::on_pushButton_2_clicked()
     else{
         correct_num++;
     }
+
+    //维护
     result =-1;
     result_str ="null";
     question = "null";
@@ -312,7 +331,7 @@ void MainWindow::on_pushButton_2_clicked()
     task_num--;
     //进入下一题
 
-    if(task_num != 0){
+    if(task_num != 0){ //如果没有全部答完
         time1=20;
         /*question = "aaaaaaaaaaaaaaaaaa";
         //answer = "输入答案-------------------"
@@ -321,11 +340,11 @@ void MainWindow::on_pushButton_2_clicked()
 
         //API
         question = out_api[count_api];
-        //answer = 2;
         answer_str = res_api[count_api];
         count_api++;
         //END OF API
 
+        //输出下一题
         ui->label_2->setText(QString::number(task_num_0-task_num+1));
         ui->textBrowser->setPlainText(QString::fromStdString(question));
         ui->textEdit->clear();
@@ -335,11 +354,12 @@ void MainWindow::on_pushButton_2_clicked()
 
         correct_rate = (double)correct_num / (double)task_num_0 ;
 
-
+        //生成历史记录
         history.open("./history.txt",ios::app);
         history << task_num_0 << "\n" << correct_num << "\n" << correct_rate << endl;
         history.close();
 
+        //生成评价分享
         share.open("./share.txt",ios::out);
         if(correct_rate > 0.95){
             share << u8"You've finished " << task_num_0 << u8" tasks. " << u8"Among them, " << correct_num << u8" are correct! " << u8"Congratulations! You get a 4.3" <<endl ;
@@ -358,7 +378,7 @@ void MainWindow::on_pushButton_2_clicked()
         }
         share.close();
 
-
+        //转到答题结束界面
         index++;
         if(index == count){
             index =0;
@@ -383,30 +403,41 @@ void MainWindow::on_pushButton_2_clicked()
     }
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButton_4_clicked()  //
 {
-    index++;
+    //如果计时器打开，则停止
+    if(timer && timer->isActive())
+        timer->stop();
+
+    //转到生成界面
+    index = 1;
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    ui->stackedWidget1->setCurrentIndex(index);
+    //}
+
+    /*index++;
     if(index == count){
         index =0;
     }
     ui->stackedWidget1->setCurrentIndex(index);
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
-    //ui->lineEdit_3->clear();
+    //ui->lineEdit_3->clear();*/
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_pushButton_5_clicked()  //点击退出
 {
     qApp->quit();
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_3_clicked()  //点击进入错题本
 {
     Dialog1 *dlg = new Dialog1(this);
     dlg->exec();
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_pushButton_6_clicked()  //点击高级选项
 {
     flag_choose_advance = true;
     dlg3 = new Dialog3(this);

@@ -6,7 +6,8 @@
 
 QT       += core gui
 QT       += sql
-LIBS += E:/Project_Files/homework_2/arithmetic_generation_tool_ui/COREdll.dll
+LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui/ -lCOREdll
+#LIBS += -lCOREdll
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,16 +31,23 @@ SOURCES += \
         mainwindow.cpp \
     dialog1.cpp \
     dialog2.cpp \
-    dialog3.cpp
+    dialog3.cpp \
+    core.cpp
 
 HEADERS += \
         mainwindow.h \
     dialog1.h \
     dialog2.h \
-    dialog3.h
+    dialog3.h \
+    core.h \
+    core.h
 
 FORMS += \
         mainwindow.ui \
     dialog1.ui \
     dialog2.ui \
     dialog3.ui
+
+DISTFILES += \
+    COREdll.lib \
+    COREdll.dll

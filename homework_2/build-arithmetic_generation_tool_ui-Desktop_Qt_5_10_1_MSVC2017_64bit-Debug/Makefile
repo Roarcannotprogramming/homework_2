@@ -219,6 +219,7 @@ Makefile: ..\arithmetic_generation_tool_ui\arithmetic_generation_tool_ui.pro D:\
 		D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_config.prf \
 		D:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-version.conf \
 		D:\QT\5.10.1\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -393,6 +394,7 @@ D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_functions.prf:
 D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_config.prf:
 D:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-version.conf:
 D:\QT\5.10.1\msvc2017_64\mkspecs\features\toolchain.prf:

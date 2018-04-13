@@ -17,7 +17,7 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStri
 INCPATH       = -I..\arithmetic_generation_tool_ui -I. -ID:\QT\5.10.1\msvc2017_64\include -ID:\QT\5.10.1\msvc2017_64\include\QtWidgets -ID:\QT\5.10.1\msvc2017_64\include\QtGui -ID:\QT\5.10.1\msvc2017_64\include\QtANGLE -ID:\QT\5.10.1\msvc2017_64\include\QtSql -ID:\QT\5.10.1\msvc2017_64\include\QtCore -Irelease -I. -I\include -ID:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:D:\QT\5.10.1\msvc2017_64\lib D:\QT\5.10.1\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib /LIBPATH:-lCOREdll D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:D:\QT\5.10.1\msvc2017_64\lib D:\QT\5.10.1\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib /LIBPATH:E:\Project_Files\homework_2\arithmetic_generation_tool_ui E:\Project_Files\homework_2\arithmetic_generation_tool_ui\COREdll.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.lib D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.lib 
 QMAKE         = D:\QT\5.10.1\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
@@ -63,10 +63,12 @@ OBJECTS       = release\main.obj \
 		release\moc_dialog2.obj \
 		release\moc_dialog3.obj
 
-DIST          =  ..\arithmetic_generation_tool_ui\mainwindow.h \
+DIST          = COREdll.lib \
+		COREdll.dll ..\arithmetic_generation_tool_ui\mainwindow.h \
 		..\arithmetic_generation_tool_ui\dialog1.h \
 		..\arithmetic_generation_tool_ui\dialog2.h \
-		..\arithmetic_generation_tool_ui\dialog3.h ..\arithmetic_generation_tool_ui\main.cpp \
+		..\arithmetic_generation_tool_ui\dialog3.h \
+		..\arithmetic_generation_tool_ui\core.h ..\arithmetic_generation_tool_ui\main.cpp \
 		..\arithmetic_generation_tool_ui\mainwindow.cpp \
 		..\arithmetic_generation_tool_ui\dialog1.cpp \
 		..\arithmetic_generation_tool_ui\dialog2.cpp \
@@ -157,7 +159,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) arithmetic_generation_tool_ui.zip $(SOURCES) $(DIST) ..\arithmetic_generation_tool_ui\arithmetic_generation_tool_ui.pro D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\common\angle.conf D:\QT\5.10.1\msvc2017_64\mkspecs\common\windows-vulkan.conf D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-desktop.conf D:\QT\5.10.1\msvc2017_64\mkspecs\qconfig.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_charts.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_core.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designer.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gui.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_help.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_location.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_network.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quick.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sql.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_svg.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webview.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_functions.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_config.prf D:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc\qmake.conf D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds.prf D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-version.conf D:\QT\5.10.1\msvc2017_64\mkspecs\features\toolchain.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\default_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\default_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\resolve_config.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds_post.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\default_post.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\build_pass.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qml_debug.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\precompile_header.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\warn_on.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\resources.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\moc.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\opengl.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\uic.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qmake_use.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\file_copies.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\windows.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\testcase_targets.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\exceptions.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\yacc.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\lex.prf ..\arithmetic_generation_tool_ui\arithmetic_generation_tool_ui.pro D:\QT\5.10.1\msvc2017_64\lib\qtmain.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.prl    D:\QT\5.10.1\msvc2017_64\mkspecs\features\data\dummy.cpp ..\arithmetic_generation_tool_ui\mainwindow.h ..\arithmetic_generation_tool_ui\dialog1.h ..\arithmetic_generation_tool_ui\dialog2.h ..\arithmetic_generation_tool_ui\dialog3.h  ..\arithmetic_generation_tool_ui\main.cpp ..\arithmetic_generation_tool_ui\mainwindow.cpp ..\arithmetic_generation_tool_ui\dialog1.cpp ..\arithmetic_generation_tool_ui\dialog2.cpp ..\arithmetic_generation_tool_ui\dialog3.cpp ..\arithmetic_generation_tool_ui\mainwindow.ui ..\arithmetic_generation_tool_ui\dialog1.ui ..\arithmetic_generation_tool_ui\dialog2.ui ..\arithmetic_generation_tool_ui\dialog3.ui    
+	$(ZIP) arithmetic_generation_tool_ui.zip $(SOURCES) $(DIST) ..\arithmetic_generation_tool_ui\arithmetic_generation_tool_ui.pro D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\common\angle.conf D:\QT\5.10.1\msvc2017_64\mkspecs\common\windows-vulkan.conf D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-desktop.conf D:\QT\5.10.1\msvc2017_64\mkspecs\qconfig.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_charts.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_core.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designer.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gui.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_help.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_location.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_network.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quick.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sql.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_svg.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webview.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xml.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_functions.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt_config.prf D:\QT\5.10.1\msvc2017_64\mkspecs\win32-msvc\qmake.conf D:\QT\5.10.1\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds.prf D:\QT\5.10.1\msvc2017_64\mkspecs\common\msvc-version.conf D:\QT\5.10.1\msvc2017_64\mkspecs\features\toolchain.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\default_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\default_pre.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\resolve_config.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\exclusive_builds_post.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\default_post.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\build_pass.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qml_debug.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\precompile_header.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\warn_on.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qt.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\resources.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\moc.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\opengl.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\uic.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\qmake_use.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\file_copies.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\win32\windows.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\testcase_targets.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\exceptions.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\yacc.prf D:\QT\5.10.1\msvc2017_64\mkspecs\features\lex.prf ..\arithmetic_generation_tool_ui\arithmetic_generation_tool_ui.pro D:\QT\5.10.1\msvc2017_64\lib\qtmain.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Widgets.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Gui.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Sql.prl D:\QT\5.10.1\msvc2017_64\lib\Qt5Core.prl    D:\QT\5.10.1\msvc2017_64\mkspecs\features\data\dummy.cpp ..\arithmetic_generation_tool_ui\mainwindow.h ..\arithmetic_generation_tool_ui\dialog1.h ..\arithmetic_generation_tool_ui\dialog2.h ..\arithmetic_generation_tool_ui\dialog3.h ..\arithmetic_generation_tool_ui\core.h  ..\arithmetic_generation_tool_ui\main.cpp ..\arithmetic_generation_tool_ui\mainwindow.cpp ..\arithmetic_generation_tool_ui\dialog1.cpp ..\arithmetic_generation_tool_ui\dialog2.cpp ..\arithmetic_generation_tool_ui\dialog3.cpp ..\arithmetic_generation_tool_ui\mainwindow.ui ..\arithmetic_generation_tool_ui\dialog1.ui ..\arithmetic_generation_tool_ui\dialog2.ui ..\arithmetic_generation_tool_ui\dialog3.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.obj release\mainwindow.obj release\dialog1.obj release\dialog2.obj release\dialog3.obj release\moc_mainwindow.obj release\moc_dialog1.obj release\moc_dialog2.obj release\moc_dialog3.obj
@@ -1491,7 +1493,7 @@ release\main.obj: ..\arithmetic_generation_tool_ui\main.cpp ../arithmetic_genera
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		../arithmetic_generation_tool_ui/dialog3.h \
-		..\arithmetic_generation_tool_ui\core.h \
+		../arithmetic_generation_tool_ui/core.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h
@@ -1839,8 +1841,54 @@ release\mainwindow.obj: ..\arithmetic_generation_tool_ui\mainwindow.cpp ../arith
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		../arithmetic_generation_tool_ui/dialog3.h \
-		..\arithmetic_generation_tool_ui\core.h \
-		ui_mainwindow.h
+		../arithmetic_generation_tool_ui/core.h \
+		ui_mainwindow.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\QVariant \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QAction \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qaction.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QGridLayout \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QLCDNumber \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QLabel \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMenu \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qmenu.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMenuBar \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qmenubar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QPushButton \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QRadioButton \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qradiobutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QStatusBar \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstatusbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QTextBrowser \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtextbrowser.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtextedit.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QTextEdit \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QToolBar \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtoolbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QWidget
 
 release\dialog1.obj: ..\arithmetic_generation_tool_ui\dialog1.cpp ../arithmetic_generation_tool_ui/dialog1.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialog \
@@ -1951,7 +1999,44 @@ release\dialog1.obj: ..\arithmetic_generation_tool_ui\dialog1.cpp ../arithmetic_
 		D:\QT\5.10.1\msvc2017_64\include\QtGui\qstandarditemmodel.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtGui\qicon.h \
-		ui_dialog1.h
+		ui_dialog1.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\QVariant \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QAction \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qaction.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialogButtonBox \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdialogbuttonbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qvalidator.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qregularexpression.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QPushButton \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QTableView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtableview.h
 
 release\dialog2.obj: ..\arithmetic_generation_tool_ui\dialog2.cpp ../arithmetic_generation_tool_ui/dialog2.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialog \
@@ -2062,7 +2147,44 @@ release\dialog2.obj: ..\arithmetic_generation_tool_ui\dialog2.cpp ../arithmetic_
 		D:\QT\5.10.1\msvc2017_64\include\QtGui\qstandarditemmodel.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtGui\qicon.h \
-		ui_dialog2.h
+		ui_dialog2.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\QVariant \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QAction \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qaction.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QButtonGroup \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qbuttongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialogButtonBox \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdialogbuttonbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtGui\qvalidator.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\qregularexpression.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QPushButton \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qpushbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QTableView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtableview.h
 
 release\dialog3.obj: ..\arithmetic_generation_tool_ui\dialog3.cpp ../arithmetic_generation_tool_ui/dialog3.h \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialog \
@@ -2407,8 +2529,34 @@ release\dialog3.obj: ..\arithmetic_generation_tool_ui\dialog3.cpp ../arithmetic_
 		D:\QT\5.10.1\msvc2017_64\include\QtCore\QTimer \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		..\arithmetic_generation_tool_ui\core.h \
-		ui_dialog3.h
+		../arithmetic_generation_tool_ui/core.h \
+		ui_dialog3.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtCore\QVariant \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QAction \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qaction.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QApplication \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QDialogButtonBox \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qdialogbuttonbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QHeaderView \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qheaderview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qstyle.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qtabbar.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qrubberband.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QLabel \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\QRadioButton \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qradiobutton.h \
+		D:\QT\5.10.1\msvc2017_64\include\QtWidgets\qabstractbutton.h
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 
