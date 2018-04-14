@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//#define CORE_MRC
+#define CORE_LJW
+
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "dialog1.h"
@@ -17,9 +20,15 @@
 #include "dialog3.h"
 #include <vector>
 
-/*以下为API接口*/
+//API
+#ifdef CORE_MRC
 #include "core.h"
-//end API
+#endif
+
+#ifdef CORE_LJW
+#include "Core15.h"
+#endif
+//END OF API
 
 class fomularCore;
 
@@ -97,14 +106,23 @@ private:
     bool flag_choose_advance;  //是否选着高级选项
     Dialog3 *dlg3;
 
-
     //API
+#ifdef CORE_MRC
     fomularCore *core;
     vector<string> out_api,res_api;
     string ops_api;
-    bool fraction;
     int count_api;
+    bool fraction;
+#endif
 
+#ifdef CORE_LJW
+    string* out_api;
+    string* res_api;
+    int has_real;
+    int has_fraction;
+    int has_mul_div;
+    int has_power;
+#endif
     //string question;
 
     QButtonGroup *calc_type;

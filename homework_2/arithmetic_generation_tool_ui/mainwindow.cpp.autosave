@@ -368,7 +368,7 @@ void MainWindow::on_actionlishijiu_triggered()//点击历史记录
 
 void MainWindow::on_actionshuchuchengji_triggered()//点击输出成绩
 {
-
+    
 }
 
 void MainWindow::on_pushButton_2_clicked() //点击下一题

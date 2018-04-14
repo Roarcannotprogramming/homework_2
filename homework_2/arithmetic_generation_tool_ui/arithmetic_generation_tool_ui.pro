@@ -6,8 +6,8 @@
 
 QT       += core gui
 QT       += sql
-#LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui/ -lCOREdll
-#LIBS += -lCOREdll
+LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui -lCOREdll
+LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui -lCore15
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,9 +31,7 @@ SOURCES += \
         mainwindow.cpp \
     dialog1.cpp \
     dialog2.cpp \
-    dialog3.cpp \
-    core.cpp \
-    core.cpp
+    dialog3.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +40,9 @@ HEADERS += \
     dialog3.h \
     core.h \
     core.h \
-    core.h
+    core.h \
+    core.h \
+    Core15.h
 
 FORMS += \
         mainwindow.ui \
