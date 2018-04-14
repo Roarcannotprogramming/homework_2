@@ -57,8 +57,9 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
         opr_num = 5;
         min_num = 0;
         max_num =100;
-        accuracy = 2;
+        accuracy = 0;
         type_int = 0;
+        //calc_type_int = 0;
     }
     else{
         opr_num = dlg3->get_opr_num();
@@ -67,6 +68,7 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
         accuracy = dlg3->get_accuracy();
         type_int = dlg3->get_type_int();
     }
+    flag_choose_advance = false;
 
 
     //强迫性填写两个单元
@@ -97,20 +99,20 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
 
 
     //API
-    if(calc_type_int = 2){
+    if(calc_type_int == 2){
         ops_api = "+-*/^()";
     }
-    else if(calc_type_int = 1){
+    else if(calc_type_int == 1){
         ops_api = "+-*/()";
     }
     else{
         ops_api = "+-()";
     }
 
-    if(type_int = 2){
+    if(type_int == 2){
         fraction = true;
     }
-    else if(type_int = 1){
+    else if(type_int == 1){
         fraction = false;
     }
     else{
@@ -118,10 +120,15 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
         accuracy = 0;
     }
 
-
-    /*core->setting(task_num_0,opr_num,max_num,ops_api,fraction,accuracy);
+    /*
+     *API主要调用
+     * setting设置
+     * out_api为返回的数组
+     * res_api为返回的答案
+     */
+    core->setting(task_num_0,opr_num,max_num,ops_api,fraction,accuracy);
     out_api = core->Generate();
-    res_api = core->getRes();*/
+    res_api = core->getRes();
 
 
     //END OF API
@@ -143,6 +150,14 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
 
     //API
     //设置题目和答案
+    //out_api.clear();
+    //res_api.clear();
+    /*if(out_api.size()){
+        out_api.clear();
+    }
+    if(res_api.size()){
+        out_api.clear();
+    }*/
     question = out_api[count_api];
     answer_str = res_api[count_api];
     count_api++;

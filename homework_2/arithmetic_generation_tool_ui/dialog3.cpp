@@ -10,7 +10,7 @@ Dialog3::Dialog3(QWidget *parent) :
     opr_num = 5;
     min_num = 0;
     max_num = 100;
-    accuracy = 2;
+    accuracy = 0;
 
     type = new QButtonGroup(this);
     type->addButton(ui->radioButton,0);

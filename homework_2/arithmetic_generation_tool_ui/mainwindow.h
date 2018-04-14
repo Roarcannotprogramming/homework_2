@@ -77,24 +77,24 @@ private slots:
 private:
     Ui::MainWindow *ui;
     //QStackedWidget *main_stack_widget;
-    int task_num, oper_num, max_num;
-    int count, index;
-    int task_num_0;
-    int wrong_idd;
-    string question;
-    double result;
-    string result_str;
-    double answer;
-    string answer_str;
-    int correct_num;
-    double correct_rate;
-    int calc_type_int;
-    int opr_num;
-    int min_num;
+    int task_num, oper_num, max_num;  //题目数 操作数 最大值
+    int count, index;  //实现过程中的界面累加器，索引
+    int task_num_0;     //题目总数
+    int wrong_idd;  //错题标号
+    string question;  //题目
+    double result;  //用户答案（废弃不用）
+    string result_str;  //用户答案
+    double answer; //标准答案（废弃不用）
+    string answer_str; //标准答案
+    int correct_num; //题目正确数
+    double correct_rate; //正确率
+    int calc_type_int;  //运算种类 加减 加减乘除 加减乘除乘方
+    int opr_num;  //运算符数量
+    int min_num; //最小值
     //int max_num;
-    int accuracy;
-    int type_int;
-    bool flag_choose_advance;
+    int accuracy;  //精度 小数点后保留几位
+    int type_int; //答案种类 整数 小数 分数
+    bool flag_choose_advance;  //是否选着高级选项
     Dialog3 *dlg3;
 
 

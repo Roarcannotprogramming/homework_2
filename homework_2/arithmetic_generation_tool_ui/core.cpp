@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <Regex>
 #include "core.h"
+#include <math.h>
 
 #include "stdlib.h"
 

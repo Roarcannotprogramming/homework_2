@@ -6,7 +6,7 @@
 
 QT       += core gui
 QT       += sql
-LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui/ -lCOREdll
+#LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui/ -lCOREdll
 #LIBS += -lCOREdll
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -48,6 +48,4 @@ FORMS += \
     dialog2.ui \
     dialog3.ui
 
-DISTFILES += \
-    COREdll.lib \
-    COREdll.dll
+DISTFILES +=
