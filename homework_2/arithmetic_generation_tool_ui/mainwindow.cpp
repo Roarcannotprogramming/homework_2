@@ -126,10 +126,11 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
      * out_api为返回的数组
      * res_api为返回的答案
      */
+    count_api =0;
     core->setting(task_num_0,opr_num,max_num,ops_api,fraction,accuracy);
     out_api = core->Generate();
     res_api = core->getRes();
-
+    core->Clear();
 
     //END OF API
 

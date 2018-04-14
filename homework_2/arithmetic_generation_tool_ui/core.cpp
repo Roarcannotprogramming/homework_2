@@ -3,10 +3,8 @@
 #include <string>
 #include <stack>
 #include <algorithm>
-#include <Regex>
-#include "core.h"
-#include <math.h>
 
+#include "core.h"
 #include "stdlib.h"
 
 bool fomularCore::isOperate(char ch)
@@ -25,9 +23,9 @@ int fomularCore::Rank(char s)
 	case '#':return -2;
 	case '\0':return -1;
 	case '(':return 0;
-	case ')':return 0;//×óÓÒÀ¨ºÅÓÅÏÈ¼¶Ğ¡ÊÇÎªÁË²»±»ÆäÓàÈÎºÎÔËËã·û¼·³ö
+	case ')':return 0;//å·¦å³æ‹¬å·ä¼˜å…ˆçº§å°æ˜¯ä¸ºäº†ä¸è¢«å…¶ä½™ä»»ä½•è¿ç®—ç¬¦æŒ¤å‡º
 	case '+':
-	case '-':return 1;//µÍÓÅÏÈ¼¶½«¼·³ö¸ßÓÅÏÈ¼¶
+	case '-':return 1;//ä½ä¼˜å…ˆçº§å°†æŒ¤å‡ºé«˜ä¼˜å…ˆçº§
 	case '*':
 	case '%':
 	case '/':return 2;
@@ -50,7 +48,7 @@ double fomularCore::CalcNum(double a, double b, char c)
 	}
 }
 
-//´ÓstringÖĞ¶ÁÈ¡Ò»¸ödoubleÊı²¢push
+//ä»stringä¸­è¯»å–ä¸€ä¸ªdoubleæ•°å¹¶push
 void fomularCore::doublepush(stack<double> & st, string exp, int & pos)
 {
 	string fl;
@@ -69,8 +67,11 @@ void fomularCore::doublepush(stack<double> & st, string exp, int & pos)
 
 double fomularCore::arthimetic(string & exp)
 {
+	int tppos = exp.find("*-");
+	if (tppos != -1)
+		return 1;
 
-	//OPTRÊÇÔËËã·ûÕ»£¬OPENÊÇÔËËãÊıÕ»
+	//OPTRæ˜¯è¿ç®—ç¬¦æ ˆï¼ŒOPENæ˜¯è¿ç®—æ•°æ ˆ
 	exp.push_back('\0');
 	stack<char> OPTR; OPTR.push('#');
 	stack<double> OPEN;
@@ -156,6 +157,8 @@ int fomularCore::findMultiple(string instr)
 					if (instr[i] == '(')bacNum++;
 					if (instr[i] == ')')bacNum--;
 					if (instr[i] == '/')inerMul *= findMultiple(instr.substr(i));
+					if (inerMul== 0 || inerMul>MaxRange || inerMul<0)
+						return 1;
 
 					tpnum.push_back(instr[i]);
 					if (bacNum == 0)break;
@@ -172,11 +175,13 @@ int fomularCore::findMultiple(string instr)
 
 			}
 			tpnum.insert(0, 1, '(');
-			mulNum *= int(arthimetic(tpnum.append(")*").append(to_string(int(inerMul)))));//ÇóµÃ×î´óµÄ·ÖÄ¸£¬Ö®ºóÔÙÔ¼
+			mulNum *= int(arthimetic(tpnum.append(")*").append(to_string(int(inerMul)))));//æ±‚å¾—æœ€å¤§çš„åˆ†æ¯ï¼Œä¹‹åå†çº¦
+			if (mulNum == 0 || mulNum>MaxRange || mulNum<0)
+				return 1;
 			tpnum.clear();
 		}
 	}
-	if (mulNum == 0 || mulNum>MaxRange)
+	if (mulNum == 0 || mulNum>MaxRange||mulNum<0)
 		return 1;
 	return mulNum;
 }
@@ -197,7 +202,7 @@ int fomularCore::gcd(int a, int b)
 		return a;
 }
 
-bool fomularCore::computeTree(fomularNode* ro, double &res)//¼ÆËã±í´ïÊ½¶ş²æÊ÷£¬Èô²»Î¥·´·Ç¸º£¬·µ»Øres½á¹û
+bool fomularCore::computeTree(fomularNode* ro, double &res)//è®¡ç®—è¡¨è¾¾å¼äºŒå‰æ ‘ï¼Œè‹¥ä¸è¿åéè´Ÿï¼Œè¿”å›resç»“æœ
 {
 	double re1 = 0, re2 = 0;
 	bool b1, b2;
@@ -217,50 +222,50 @@ bool fomularCore::computeTree(fomularNode* ro, double &res)//¼ÆËã±í´ïÊ½¶ş²æÊ÷£¬È
 	}
 }
 
-//Ëæ»úÉú³ÉÔ­Ê¼±í´ïÊ½£¬¸öÊıÎªexpNum
+//éšæœºç”ŸæˆåŸå§‹è¡¨è¾¾å¼ï¼Œä¸ªæ•°ä¸ºexpNum
 vector<string> fomularCore::geneExp(int expNum)
 {
 	vector<string> res;
 	string temp;
 	int num, opch;
 	string numstr;
-	int loc1, loc2;//À¨ºÅÎ»ÖÃ
+	int loc1, loc2;//æ‹¬å·ä½ç½®
 	int opnum, bracketNum;
 	bool isPower = false;
 
 	for (int i = 0; i < expNum; i++)
 	{
-		opnum = random(1, maxopNum);//Ñ¡¶¨ÔËËã·û¸öÊı
+		opnum = random(1, maxopNum);//é€‰å®šè¿ç®—ç¬¦ä¸ªæ•°
 
 		for (int j = 0; j < opnum; j++)
 		{
 			if (isPower == false)
 			{
-				num = random(1, range);//ÔİÊ±²»¹Ü0.¡£
+				num = random(1, range);//æš‚æ—¶ä¸ç®¡0.ã€‚
 				numstr = to_string(num);
 			}
 			else
 			{
-				num = random(1, 5);//ÔİÊ±²»¹Ü0.¡£
+				num = random(1, 5);//æš‚æ—¶ä¸ç®¡0.ã€‚
 				numstr = to_string(num);
 				isPower = false;
 			}
-			opch = ops[random(0, ops.size() - 3)];//Ñ¡ÔñÔËËã·û
+			opch = ops[random(0, ops.size() - 3)];//é€‰æ‹©è¿ç®—ç¬¦
 			if (char(opch) == '^')
 				isPower = true;
 			temp.append(numstr);
 			temp.push_back(opch);
 		}
-		num = random(1, range);//ÔİÊ±²»¹Ü0.¡£
+		num = random(1, range);//æš‚æ—¶ä¸ç®¡0.ã€‚
 		numstr = to_string(num);
 		temp.append(numstr);
 
-		bracketNum = random(1, opnum);//Ñ¡¶¨À¨ºÅ¶ÔÊı
+		bracketNum = random(1, opnum);//é€‰å®šæ‹¬å·å¯¹æ•°
 
 		while (bracketNum-- >0)
 		{
 			loc1 = random(0, temp.size() - 1);
-			loc2 = random(loc1 + 1, temp.size());//À¨ºÅÎ»ÖÃ
+			loc2 = random(loc1 + 1, temp.size());//æ‹¬å·ä½ç½®
 
 			while (loc1 != 0 && (!isNum(temp[loc1]) || !isOperate(temp[loc1 - 1])))
 			{
@@ -271,7 +276,7 @@ vector<string> fomularCore::geneExp(int expNum)
 			while (loc2 != temp.size() && (!isNum(temp[loc2 - 1]) || !isOperate(temp[loc2])))
 			{
 				loc2++;
-			}//ÒÆ¶¯À¨ºÅµ½ºÏÊÊÎ»ÖÃ²¢²åÈë
+			}//ç§»åŠ¨æ‹¬å·åˆ°åˆé€‚ä½ç½®å¹¶æ’å…¥
 			temp.insert(loc2, 1, ')');
 		}
 
@@ -288,16 +293,16 @@ bool fomularCore::toPostTree(vector<string> & fomus)
 	vector<string> res;
 
 	string exp, numstr;
-	stack<char> OPTR; //ÔËËã·ûÕ»
-	stack<fomularNode*> OPEN;//½á¹ûÕ»
+	stack<char> OPTR; //è¿ç®—ç¬¦æ ˆ
+	stack<fomularNode*> OPEN;//ç»“æœæ ˆ
 	fomularNode *node1, *node2, *tempNode;
 
 
 	for (size_t i = 0; i < fomus.size(); i++)
 	{
 		exp = fomus[i];
-		//exp = "2+3"; //²âÊÔÊäÈë
-		//OPTRÊÇÔËËã·ûÕ»£¬OPENÊÇÔËËãÊıÕ»
+		//exp = "2+3"; //æµ‹è¯•è¾“å…¥
+		//OPTRæ˜¯è¿ç®—ç¬¦æ ˆï¼ŒOPENæ˜¯è¿ç®—æ•°æ ˆ
 		exp.push_back('\0');
 		OPTR.push('#');
 
@@ -311,7 +316,7 @@ bool fomularCore::toPostTree(vector<string> & fomus)
 
 			if (pos == 1 && ch == '+') { pos++; continue; }
 			if (pos == 1 && ch == '-') { exp.insert(0, 1, '0'); pos--; continue; }
-			//to deal with  '+8+1' ¡®-8+4¡¯
+			//to deal with  '+8+1' â€˜-8+4â€™
 
 			if (!isOperate(ch) && ch != '\0')
 			{
@@ -410,8 +415,8 @@ bool fomularCore::toJudgeTree()
 
 	for (int i = 0; i < rfomuNum; i++)
 	{
-		okFlag[i] = computeTree(fomulars[i], result[i]);//ÅĞ¶ÏÎŞ¸º
-		for (int j = 0; j < i; j++)                   //ÏÈÅĞ¶Ï´ğ°¸ÊÇ·ñÒ»ÖÂ£¬Ò»ÖÂ²ÅÓĞ¿ÉÄÜÊÇÏàµÈ±í´ïÊ½
+		okFlag[i] = computeTree(fomulars[i], result[i]);//åˆ¤æ–­æ— è´Ÿ
+		for (int j = 0; j < i; j++)                   //å…ˆåˆ¤æ–­ç­”æ¡ˆæ˜¯å¦ä¸€è‡´ï¼Œä¸€è‡´æ‰æœ‰å¯èƒ½æ˜¯ç›¸ç­‰è¡¨è¾¾å¼
 		{
 			if (result[i] == result[j])
 			{
@@ -431,7 +436,7 @@ void fomularCore::treeTostr(fomularNode* ro, string &pre)
 {
 
 	if (ro == NULL)return;
-	if (ro->chFlag == false)//Ö»¿´×ó±ß¾ÍĞĞ£¬²»¿¼ÂÇÀ¨ºÅ
+	if (ro->chFlag == false)//åªçœ‹å·¦è¾¹å°±è¡Œï¼Œä¸è€ƒè™‘æ‹¬å·
 	{
 		pre.append(to_string(ro->value));
 		return;
@@ -475,8 +480,14 @@ vector<string> fomularCore::fomusToStr(vector<fomularNode*> jFomus)
 		outstr.push_back(tempstr);
 		tempstr.clear();
 	}
+	if (fractionflag == true)
+	{
+		//outstr.
+	}
+
 	return outstr;
 }
+
 
 
 

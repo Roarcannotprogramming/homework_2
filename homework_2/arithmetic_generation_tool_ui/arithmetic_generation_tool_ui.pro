@@ -32,6 +32,7 @@ SOURCES += \
     dialog1.cpp \
     dialog2.cpp \
     dialog3.cpp \
+    core.cpp \
     core.cpp
 
 HEADERS += \
@@ -39,6 +40,7 @@ HEADERS += \
     dialog1.h \
     dialog2.h \
     dialog3.h \
+    core.h \
     core.h \
     core.h
 
