@@ -10,17 +10,12 @@ Dialog2::Dialog2(QWidget *parent) :
     history_model = new QStandardItemModel(this);
 
 
-    history_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("zongtishu")));
-    history_model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("zhengquetishu")));
-    history_model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("zhengquelv")));
+    history_model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("题数")));
+    history_model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("正确题数")));
+    history_model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("正确比例")));
     //history_model->setHorizontalHeaderItem(3, new QStandardItem(QObject::tr("正确答案")));
     ui->tableView->setModel(history_model);
 
-    /*ui->tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
-    ui->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::ResizeToContents);*/
 
     ui->tableView->setColumnWidth(0,100);
     ui->tableView->setColumnWidth(1,100);

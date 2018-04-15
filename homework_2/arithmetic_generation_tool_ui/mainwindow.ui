@@ -175,7 +175,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>230</y>
+          <y>210</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -197,8 +197,8 @@
        <widget class="QLabel" name="label_8">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>240</y>
+          <x>40</x>
+          <y>220</y>
           <width>101</width>
           <height>20</height>
          </rect>
@@ -210,8 +210,8 @@
        <widget class="QRadioButton" name="radioButton">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>300</y>
+          <x>140</x>
+          <y>260</y>
           <width>115</width>
           <height>19</height>
          </rect>
@@ -226,8 +226,8 @@
        <widget class="QRadioButton" name="radioButton_2">
         <property name="geometry">
          <rect>
-          <x>190</x>
-          <y>300</y>
+          <x>200</x>
+          <y>260</y>
           <width>115</width>
           <height>19</height>
          </rect>
@@ -239,8 +239,8 @@
        <widget class="QRadioButton" name="radioButton_3">
         <property name="geometry">
          <rect>
-          <x>280</x>
-          <y>300</y>
+          <x>290</x>
+          <y>260</y>
           <width>115</width>
           <height>19</height>
          </rect>
@@ -253,7 +253,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>300</y>
+          <y>260</y>
           <width>101</width>
           <height>21</height>
          </rect>
@@ -265,8 +265,8 @@
        <widget class="QPushButton" name="pushButton_6">
         <property name="geometry">
          <rect>
-          <x>430</x>
-          <y>290</y>
+          <x>420</x>
+          <y>260</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -446,6 +446,10 @@ p, li { white-space: pre-wrap; }
    <addaction name="actionshuchuchengji"/>
   </widget>
   <action name="actionewwewe">
+   <property name="icon">
+    <iconset resource="png/png.qrc">
+     <normaloff>:/ooopic_1523791413.ico</normaloff>:/ooopic_1523791413.ico</iconset>
+   </property>
    <property name="text">
     <string>新建答题</string>
    </property>
@@ -454,6 +458,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actioncuotiben">
+   <property name="icon">
+    <iconset resource="png/png.qrc">
+     <normaloff>:/ooopic_1523791490.ico</normaloff>:/ooopic_1523791490.ico</iconset>
+   </property>
    <property name="text">
     <string>错题本</string>
    </property>
@@ -462,6 +470,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionlishijiu">
+   <property name="icon">
+    <iconset resource="png/png.qrc">
+     <normaloff>:/ooopic_1523791477.ico</normaloff>:/ooopic_1523791477.ico</iconset>
+   </property>
    <property name="text">
     <string>历史记录</string>
    </property>
@@ -470,6 +482,10 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
   <action name="actionshuchuchengji">
+   <property name="icon">
+    <iconset resource="png/png.qrc">
+     <normaloff>:/ooopic_1523791528.ico</normaloff>:/ooopic_1523791528.ico</iconset>
+   </property>
    <property name="text">
     <string>生成成绩单</string>
    </property>
@@ -479,6 +495,8 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="png/png.qrc"/>
+ </resources>
  <connections/>
 </ui>

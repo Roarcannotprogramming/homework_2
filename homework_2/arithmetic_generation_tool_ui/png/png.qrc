@@ -8,4 +8,10 @@
         <file>7483d2148c8719b44545fbdcc1bfd7b6.png</file>
         <file>f1b4301c6a2021a0caed72ca3253a4f9.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>ooopic_1523791413.ico</file>
+        <file>ooopic_1523791477.ico</file>
+        <file>ooopic_1523791490.ico</file>
+        <file>ooopic_1523791528.ico</file>
+    </qresource>
 </RCC>

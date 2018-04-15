@@ -215,6 +215,7 @@ void MainWindow::on_pushButton_clicked()  //点击开始答题按钮
 
     //启动计时
     timer= new QTimer;
+    time1 = 20;
     connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
     timer->start(1000); //每次计时1s，1s结束后触发槽timeout()
 }
@@ -226,9 +227,8 @@ void MainWindow::timeout(){
     if(time1!=0){ //如果时间还没到20s
         time1--;
         ui->lcdNumber->display(QString::number(time1,10));//显示十进制时间
-    }else{
-
-
+    }
+    else{
         result = -1; //不使用，使用result_str
         result_str = "null"; //因为时间到，所以result = null
         wrong_idd = task_num_0-task_num+1; //错题序号
@@ -368,7 +368,8 @@ void MainWindow::on_actionlishijiu_triggered()//点击历史记录
 
 void MainWindow::on_actionshuchuchengji_triggered()//点击输出成绩
 {
-
+    QMessageBox *fucking_share = new QMessageBox;
+    fucking_share->warning(this,tr("温馨提示"),tr("你的分享文件在答题文件的文件夹下噢~"),QMessageBox::Yes,QMessageBox::Yes);
 }
 
 void MainWindow::on_pushButton_2_clicked() //点击下一题
@@ -377,6 +378,10 @@ void MainWindow::on_pushButton_2_clicked() //点击下一题
     //result = ui->textEdit->toPlainText().toDouble();
     //获取结果
     result_str = ui->textEdit->toPlainText().toStdString();
+
+    while(result_str[result_str.length()-1] == '\n' || result_str[result_str.length()-1] == ' '){
+        result_str.pop_back();
+    }
 
     if(result_str.compare(answer_str) != 0){           //是否答对，如否加入错题本
         wrong_answers.open("./wrong_answer.txt",ios::app);
