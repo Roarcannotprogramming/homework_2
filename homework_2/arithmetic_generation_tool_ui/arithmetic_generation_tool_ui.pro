@@ -6,8 +6,8 @@
 
 QT       += core gui
 QT       += sql
-LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui -lCOREdll
-LIBS += -LE:/Project_Files/homework_2/arithmetic_generation_tool_ui -lCore15
+#LIBS += -L./ -lCOREdll
+#LIBS += -L./ -lCore15
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -59,3 +59,19 @@ RESOURCES += \
     other/main.qrc \
     other/qss.qrc \
     png/png.qrc
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -lCore15
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/./ -lCore15d
+else:unix: LIBS += -L$$PWD/./ -lCore15
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -lCOREdll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/./ -lCOREdlld
+else:unix: LIBS += -L$$PWD/./ -lCOREdll
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
