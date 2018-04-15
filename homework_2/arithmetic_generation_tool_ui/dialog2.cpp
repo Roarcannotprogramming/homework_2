@@ -42,20 +42,12 @@ Dialog2::Dialog2(QWidget *parent) :
     history_text.open("./history.txt",ios::in);
 
     while(getline(history_text, total)){
-          //getline(wrong_things, wrong_id);
+
           history_model->setItem(line, 0, new QStandardItem(QString::fromStdString(total)));
           getline(history_text, correct);
           history_model->setItem(line, 1, new QStandardItem(QString::fromStdString(correct)));
           getline(history_text, correct_rate);
           history_model->setItem(line, 2, new QStandardItem(QString::fromStdString(correct_rate)));
-
-         /* getline(wrong_things, answer);
-          wrong_answer_model->setItem(line, 3, new QStandardItem(QString::fromStdString(answer)));*/
-
-        //wrong_answer_model->setItem(line, 0, new QStandardItem(QString::fromStdString(wrong_id)));
-        //wrong_answer_model->setItem(line, 1, new QStandardItem(QString::fromStdString(question)));
-        //wrong_answer_model->setItem(line, 2, new QStandardItem(QString::fromStdString(result)));
-        //wrong_answer_model->setItem(line, 3, new QStandardItem(QString::fromStdString(answer)));
 
         line++;
     }

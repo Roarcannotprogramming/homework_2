@@ -174,7 +174,7 @@ public:
         textBrowser = new QTextBrowser(page_2);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(11, 35, 301, 192));
-        textBrowser->setStyleSheet(QStringLiteral("border-image: url(:/new/png/3e69e26050d0eede4c51f526604dc29a.png);"));
+        textBrowser->setStyleSheet(QStringLiteral(""));
         textEdit = new QTextEdit(page_2);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(357, 35, 191, 121));
