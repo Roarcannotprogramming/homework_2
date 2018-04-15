@@ -50,4 +50,12 @@ FORMS += \
     dialog2.ui \
     dialog3.ui
 
-DISTFILES +=
+DISTFILES += \
+    other/main.ico \
+    other/main.ico \
+    other/main.rc
+
+RESOURCES += \
+    other/main.qrc \
+    other/qss.qrc \
+    png/png.qrc

@@ -85,6 +85,7 @@ public:
         MainWindow->resize(581, 440);
         MainWindow->setMinimumSize(QSize(581, 440));
         MainWindow->setMaximumSize(QSize(581, 440));
+        MainWindow->setStyleSheet(QStringLiteral(""));
         actionewwewe = new QAction(MainWindow);
         actionewwewe->setObjectName(QStringLiteral("actionewwewe"));
         actioncuotiben = new QAction(MainWindow);
@@ -101,6 +102,7 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         stackedWidget1 = new QStackedWidget(centralWidget);
         stackedWidget1->setObjectName(QStringLiteral("stackedWidget1"));
+        stackedWidget1->setStyleSheet(QStringLiteral(""));
         page_3 = new QWidget();
         page_3->setObjectName(QStringLiteral("page_3"));
         label_4 = new QLabel(page_3);
@@ -132,7 +134,7 @@ public:
         page->setObjectName(QStringLiteral("page"));
         pushButton = new QPushButton(page);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(350, 150, 161, 101));
+        pushButton->setGeometry(QRect(390, 190, 161, 101));
         pushButton->setStyleSheet(QString::fromUtf8("font: 14pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
         lineEdit = new QLineEdit(page);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
@@ -164,12 +166,14 @@ public:
         label = new QLabel(page);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(100, 20, 351, 121));
+        label->setStyleSheet(QStringLiteral(""));
         stackedWidget1->addWidget(page);
         page_2 = new QWidget();
         page_2->setObjectName(QStringLiteral("page_2"));
         textBrowser = new QTextBrowser(page_2);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
         textBrowser->setGeometry(QRect(11, 35, 301, 192));
+        textBrowser->setStyleSheet(QStringLiteral("border-image: url(:/new/png/3e69e26050d0eede4c51f526604dc29a.png);"));
         textEdit = new QTextEdit(page_2);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(357, 35, 191, 121));
@@ -193,7 +197,7 @@ public:
         label_11->setGeometry(QRect(160, 10, 72, 15));
         stackedWidget1->addWidget(page_2);
 
-        gridLayout->addWidget(stackedWidget1, 0, 1, 1, 1);
+        gridLayout->addWidget(stackedWidget1, 0, 0, 1, 2);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);

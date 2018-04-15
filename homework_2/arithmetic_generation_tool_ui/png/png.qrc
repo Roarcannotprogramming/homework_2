@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/png">
+        <file>01b689455b28e2cff7ac5c7bc7f7f88f.png</file>
+        <file>3e69e26050d0eede4c51f526604dc29a.png</file>
+        <file>5c81e603d148223bfcd418f108bec65d.png</file>
+        <file>88e74cb32e848246d7ff8b6411d4335b.png</file>
+        <file>f3c93ce6e127e54a95ac234fa747d17d.png</file>
+        <file>7483d2148c8719b44545fbdcc1bfd7b6.png</file>
+        <file>f1b4301c6a2021a0caed72ca3253a4f9.png</file>
+    </qresource>
+</RCC>
