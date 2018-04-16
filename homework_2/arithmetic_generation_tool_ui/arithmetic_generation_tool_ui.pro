@@ -42,6 +42,7 @@ HEADERS += \
     core.h \
     core.h \
     core.h \
+    Core15.h \
     Core15.h
 
 FORMS += \
